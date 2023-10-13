@@ -7,10 +7,24 @@
     <title>Vite + Lit</title>
     <link rel="stylesheet" href="./src/index.css" />
     <script type="module" src="/src/my-element.js"></script>
+    <script type="module" src="/src/my-second-element.js"></script>
+
+    <script type="module">
+      import { Router } from '@vaadin/router';
+
+      const app = document.querySelector('#outlet');
+      const router = new Router(outlet);
+
+      router.setRoutes([
+        {path: '/', component: 'my-element'},
+        {path: '/second', component: 'my-second-element'},
+      ]);
+    </script>
   </head>
   <body>
-    <my-element>
-      <h1>Vite + Lit</h1>
-    </my-element>
+      <a href="/">first</a>
+      <a href="/second">second</a>
+
+      <div id="outlet"></div>
   </body>
 </html>
