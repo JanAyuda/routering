@@ -1,30 +1,25 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Lit</title>
-    <link rel="stylesheet" href="./src/index.css" />
-    <script type="module" src="/src/my-element.js"></script>
-    <script type="module" src="/src/my-second-element.js"></script>
-
-    <script type="module">
-      import { Router } from '@vaadin/router';
-
-      const app = document.querySelector('#outlet');
-      const router = new Router(outlet);
-
-      router.setRoutes([
-        {path: '/', component: 'my-element'},
-        {path: '/second', component: 'my-second-element'},
-      ]);
-    </script>
+<!doctype html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8" /> 
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <title>Vite + Lit</title> 
+    <link rel="stylesheet" href="./src/index.css" /> 
+    <script type="module" src="/src/my-element.js"></script> <!-- Een verwijzing naar een JavaScript-module die zich op het pad "/src/my-element.js" bevindt. -->
+    <script type="module" src="/src/my-second-element.js"></script> <!-- Een verwijzing naar een andere JavaScript-module die zich op het pad "/src/my-second-element.js" bevindt. -->
+    <script type="module" src="/src/my-users.js"></script>
+    <script type="module" src="/src/router.js"></script>
   </head>
   <body>
-      <a href="/">first</a>
-      <a href="/second">second</a>
+    <div>
+      <a href="/">first</a> <!-- Een hyperlink naar de hoofdpagina. -->
+      <a href="/second">second</a> <!-- Een hyperlink naar een tweede pagina, de component "my-second-element". -->
+      <a href="/users/2">second user</a> <!-- Een hyperlink naar een user met de parameter 2. -->
+      <a href="/users/3" router-ignore>third user</a> <!-- router-ignore zorgt ervoor de router "Vaadin" dit negeert, waardoor het op de gebruikelijke manier wordt geladen.-->
+    </div>
 
-      <div id="outlet"></div>
+    <!-- Div-element met de id 'outlet', bedoeld om de inhoud van de gerouteerde pagina weer te geven. -->
+    <div id="outlet"></div>
   </body>
 </html>
